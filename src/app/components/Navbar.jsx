@@ -99,7 +99,7 @@ const Navbar = () => {
               </li>
 
               <li className="text-black hover:text-[#92855c] duration-300 text-2xl">
-                <Link href="/">
+                <Link href="/login">
                   <CiUser />
                 </Link>
               </li>

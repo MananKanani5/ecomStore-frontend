@@ -6,6 +6,7 @@ import Image from "next/image";
 import { CiHeart, CiShoppingCart, CiUser, CiSearch } from "react-icons/ci";
 import { FiMenu } from "react-icons/fi";
 import { IoClose } from "react-icons/io5";
+import Search from "./Search";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -32,9 +33,15 @@ const Navbar = () => {
     };
   }, [isMenuOpen]);
 
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+
+  const toggleSearch = () => {
+    setIsSearchOpen(!isSearchOpen);
+  };
+
   return (
     <>
-      <section className="navbar sticky top-0 z-[9999] h-28 max-lg:h-fit max-lg:py-3 flex flex-col justify-center">
+      <section className="navbar sticky top-0 z-[9999] h-26 max-lg:h-fit bg-white max-lg:py-3 flex flex-col justify-center animate__animated animate__fadeIn">
         <div className="container mx-auto flex items-center px-12 py-2 max-lg:px-5">
           <button className="mr-3 hidden max-lg:block" onClick={toggleMenu}>
             <FiMenu className="text-xl" />
@@ -86,7 +93,7 @@ const Navbar = () => {
           <div className="navbar-right flex items-center justify-end gap-4 w-1/4 max-lg:w-3/5">
             <ul className="flex items-center gap-4">
               <li className="text-black hover:text-[#92855c] duration-300 text-2xl">
-                <Link href="/">
+                <Link href={""} onClick={toggleSearch}>
                   <CiSearch />
                 </Link>
               </li>
@@ -124,6 +131,8 @@ const Navbar = () => {
           </div>
         </div>
       </section>
+
+      <Search isSearchOpen={isSearchOpen} toggleSearch={toggleSearch} />
     </>
   );
 };

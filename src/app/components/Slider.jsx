@@ -59,11 +59,11 @@ const Slider = () => {
           {slider.map((item) => (
             <div
               key={item.id}
-              className={`relative flex items-center justify-center max-sm:h-[400px] h-[600px] bg-cover bg-center`}
+              className={`relative flex items-center justify-center max-sm:h-[400px] h-[600px] bg-cover bg-center animate__animated animate__fadeIn`}
               style={{ backgroundImage: `url(${item.image?.src})` }}
             >
               <div
-                className={` absolute z-10 flex gap-5 flex-col max-w-1/2 ${
+                className={` absolute z-10 flex gap-5 flex-col max-w-1/2  ${
                   item.alignment === "left"
                     ? "items-start left-12 max-sm:left-5"
                     : item.alignment === "center"
@@ -72,7 +72,7 @@ const Slider = () => {
                 }`}
               >
                 <h3
-                  className={`text-5xl max-sm:text-3xl font-bold ${
+                  className={`text-5xl max-sm:text-3xl font-bold animate__animated animate__fadeInUp ${
                     item.alignment === "left"
                       ? "text-left"
                       : item.alignment === "center"
@@ -84,7 +84,7 @@ const Slider = () => {
                 </h3>
                 <>
                   <p
-                    className={`text-sm font-medium sm:hidden ${
+                    className={`text-sm font-medium sm:hidden animate__animated animate__fadeInUp ${
                       item.alignment === "left"
                         ? "text-left"
                         : item.alignment === "center"
@@ -96,7 +96,7 @@ const Slider = () => {
                   </p>
 
                   <p
-                    className={`text-lg font-medium max-sm:hidden ${
+                    className={`text-lg font-medium max-sm:hidden animate__animated animate__fadeInUp ${
                       item.alignment === "left"
                         ? "text-left"
                         : item.alignment === "center"
@@ -107,7 +107,10 @@ const Slider = () => {
                     {item.description}
                   </p>
                 </>
-                <Link className="button" href={item.buttonLink}>
+                <Link
+                  className="button animate__animated animate__fadeInUp"
+                  href={item.buttonLink}
+                >
                   {item.buttonText}
                 </Link>
               </div>

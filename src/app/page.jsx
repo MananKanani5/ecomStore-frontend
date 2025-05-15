@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import Slider from "./components/Slider";
+import "animate.css";
 
 const products = [
   {
@@ -73,6 +74,7 @@ const page = () => {
   return (
     <>
       <Slider />
+      <div className="container mx-auto px-4 py-28"></div>
     </>
   );
 };

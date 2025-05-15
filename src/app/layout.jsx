@@ -1,5 +1,6 @@
 import Navbar from "./components/Navbar";
 import "./globals.css";
+import "animate.css";
 
 export const metadata = {
   title: "ecomStore | Home",

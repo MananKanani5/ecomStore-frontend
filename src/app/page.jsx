@@ -1,10 +1,6 @@
 "use client";
 import React from "react";
-import Link from "next/link";
-import Image from "next/image";
-import { Carousel } from "react-responsive-carousel";
-import "react-responsive-carousel/lib/styles/carousel.min.css";
-import slide1 from "./assets/slider/1.jpg";
+import Slider from "./components/Slider";
 
 const products = [
   {
@@ -76,52 +72,7 @@ const products = [
 const page = () => {
   return (
     <>
-      <section className="hero-section bg-gray-200">
-        <Carousel
-          autoPlay={true}
-          infiniteLoop={true}
-          showThumbs={false}
-          showStatus={false}
-          showIndicators={false}
-          interval={3000}
-          transitionTime={600}
-          stopOnHover={true}
-          swipeable={true}
-          emulateTouch={true}
-          className="carousel-container"
-        >
-          <div className="reltive flex items-center justify-center">
-            <Image src={slide1} alt="slide1" className="slider-image" />
-            <div className="z-10 absolute flex gap-5 flex-col items-center">
-              <h3 className="text-5xl font-bold">Discover the Latest Trends</h3>
-              <p className="text-lg font-medium">
-                Explore our fresh new collection — handpicked just for you.
-              </p>
-              <Link className="button" href={"/products"}>
-                Shop Now
-              </Link>
-            </div>
-          </div>
-
-          <div className="relative  flex items-center justify-center">
-            <Image src={slide1} alt="slide1" className="slider-image" />
-            <div className="z-10 absolute flex gap-5 flex-col items-center">
-              <h3 className="text-5xl font-bold">
-                Limited Time Offer - Up to 50% Off!
-              </h3>
-              <p className="text-lg font-medium">
-                Grab exclusive deals on top-selling products before they're
-                gone.
-              </p>
-              <Link className="button" href={"/products"}>
-                Shop Now
-              </Link>
-            </div>
-          </div>
-        </Carousel>
-      </section>
-
-      <section className=""></section>
+      <Slider />
     </>
   );
 };

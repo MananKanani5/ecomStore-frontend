@@ -1,11 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
 @import "tailwindcss";
 
 :root{
-  --primary-color: #3f73b8;
+  --primary-color: #92855c;
 }
 
 body {
-  font-family:  poppins, sans-serif;
+  font-family:  Plus Jakarta Sans, sans-serif;
 }
 
 .carousel-container{
@@ -13,7 +14,7 @@ body {
 }
 
 .button {
-  background-color: var(--primary-color);
+  background-color: #202020;
   border: none;
   color: white;
   padding: 12px 32px;
@@ -21,7 +22,20 @@ body {
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-  margin: 4px 2px;
+  /* margin: 4px 2px; */
   cursor: pointer;
   border-radius: 10px;
+  transition-duration: 0.3s;
 }
+
+.button:hover {
+  background-color: var(--primary-color);
+}
+
+@media screen and (max-width: 768px) {
+  .button {
+    padding: 10px 22px;
+    font-size: 16px;
+  }
+  
+} 

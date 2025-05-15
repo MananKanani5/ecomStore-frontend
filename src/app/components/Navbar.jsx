@@ -1,94 +1,114 @@
-import React from "react";
-import logo from "../assets/logo.png";
+"use client";
+import React, { useEffect, useRef, useState } from "react";
+import logo from "../assets/logo.svg";
 import Link from "next/link";
-import {
-  FaEnvelope,
-  FaFacebook,
-  FaHeart,
-  FaInstagram,
-  FaShoppingCart,
-  FaWhatsapp,
-  FaYoutube,
-} from "react-icons/fa";
 import Image from "next/image";
+import { CiHeart, CiShoppingCart, CiUser, CiSearch } from "react-icons/ci";
+import { FiMenu } from "react-icons/fi";
+import { IoClose } from "react-icons/io5";
 
 const Navbar = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const menuRef = useRef(null);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        isMenuOpen &&
+        menuRef.current &&
+        !menuRef.current.contains(event.target)
+      ) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isMenuOpen]);
+
   return (
     <>
-      <section className="top-bar bg-black text-white ">
-        <div className="container mx-auto flex justify-between items-center px-5 py-1 font-light">
-          <div className="topBar-left flex items-center gap-4 text-sm font-light">
-            <Link
-              href="mailto:kanani.manan5@gmail.com"
-              className="flex items-center gap-2"
-            >
-              <FaEnvelope />
-              <span>kanani.manan5@gmail.com</span>
-            </Link>
-          </div>
+      <section className="navbar sticky top-0 z-[9999] h-28 max-lg:h-fit max-lg:py-3 flex flex-col justify-center">
+        <div className="container mx-auto flex items-center px-12 py-2 max-lg:px-5">
+          <button className="mr-3 hidden max-lg:block" onClick={toggleMenu}>
+            <FiMenu className="text-xl" />
+          </button>
 
-          <div className="topBar-right flex items-center gap-3">
-            <Link href="https://www.facebook.com/profile.php?id=100084193929925">
-              <FaFacebook />
-            </Link>
-            <Link href="https://www.facebook.com/profile.php?id=100084193929925">
-              <FaInstagram />
-            </Link>
-            <Link href="https://www.facebook.com/profile.php?id=100084193929925">
-              <FaYoutube />
-            </Link>
-            <Link href="https://www.facebook.com/profile.php?id=100084193929925">
-              <FaWhatsapp />
-            </Link>
-          </div>
-        </div>
-      </section>
-      <section className="navbar sticky top-0 z-50 bg-gray-200">
-        <div className="container mx-auto flex items-center px-4 py-2">
-          <div className="navbar-left flex items-center gap-4 w-1/4">
+          <div className="navbar-left flex items-center w-1/4 max-lg:w-2/5">
             <Link href="/">
               <Image src={logo} alt="logo" width={180} height={100} />
             </Link>
           </div>
 
-          <div className="navbar-center w-1/2 flex justify-center">
-            <ul className="flex items-center gap-4">
-              <li className="text-black hover:text-blue-500 duration-300">
-                <Link href="/">Home</Link>
+          <div
+            ref={menuRef}
+            className={`navbar-center w-1/2 flex justify-center max-lg:fixed max-lg:bg-white max-lg:h-screen max-lg:w-11/12 max-lg:top-0 max-lg:left-0 max-lg:z-50 max-lg:shadow-md max-lg:duration-300 max-lg:py-18 ${
+              isMenuOpen ? "max-lg:translate-x-0" : "max-lg:-translate-x-full"
+            }`}
+          >
+            <button
+              className="absolute top-5 right-5 text-2xl max-lg:block hidden"
+              onClick={toggleMenu}
+              aria-label="Close menu"
+            >
+              <IoClose />
+            </button>
+            <ul className="flex items-center gap-8 max-lg:flex-col max-col-justify-center max-lg:gap-10 max-lg:py-10 max-sm:w-full ">
+              <li className="text-black hover:text-[#92855c] duration-300 ">
+                <Link href="/" onClick={() => setIsMenuOpen(false)}>
+                  Home
+                </Link>
               </li>
-              <li className="text-black hover:text-blue-500 duration-300">
-                <Link href="/about">About Us</Link>
+              <li className="text-black hover:text-[#92855c] duration-300">
+                <Link href="/about" onClick={() => setIsMenuOpen(false)}>
+                  About Us
+                </Link>
               </li>
-              <li className="text-black hover:text-blue-500 duration-300">
-                <Link href="/products">Products</Link>
+              <li className="text-black hover:text-[#92855c] duration-300">
+                <Link href="/products" onClick={() => setIsMenuOpen(false)}>
+                  Products
+                </Link>
               </li>
-              <li className="text-black hover:text-blue-500 duration-300">
-                <Link href="/contact">Contact Us</Link>
+              <li className="text-black hover:text-[#92855c] duration-300">
+                <Link href="/contact" onClick={() => setIsMenuOpen(false)}>
+                  Contact Us
+                </Link>
               </li>
             </ul>
           </div>
 
-          <div className="navbar-right flex items-center justify-end gap-4 w-1/4 ">
+          <div className="navbar-right flex items-center justify-end gap-4 w-1/4 max-lg:w-3/5">
             <ul className="flex items-center gap-4">
-              <li className="text-black hover:text-blue-500 duration-300">
-                <Link href="/login">Login</Link>
-              </li>
-              <li className="text-black hover:text-blue-500 duration-300">
-                <Link href="/register">Register</Link>
-              </li>
-              <span>|</span>
-              <li className="text-black hover:text-blue-500 duration-300 text-lg">
+              <li className="text-black hover:text-[#92855c] duration-300 text-2xl">
                 <Link href="/">
-                  <FaShoppingCart />
-                </Link>
-              </li>
-              <li className="text-black hover:text-blue-500 duration-300 text-lg ">
-                <Link href="/">
-                  <FaHeart />
+                  <CiSearch />
                 </Link>
               </li>
 
-              {/* <li className="text-black hover:text-blue-500 duration-300 text-lg">
+              <li className="text-black hover:text-[#92855c] duration-300 text-2xl">
+                <Link href="/">
+                  <CiUser />
+                </Link>
+              </li>
+
+              <li className="text-black hover:text-[#92855c] duration-300 text-2xl ">
+                <Link href="/">
+                  <CiHeart />
+                </Link>
+              </li>
+              <li className="text-black hover:text-[#92855c] duration-300 text-2xl">
+                <Link href="/">
+                  <CiShoppingCart />
+                </Link>
+              </li>
+
+              {/* <li className="text-black hover:text-[#92855c] duration-300 text-lg">
                 <Link href="/">
                   <Image
                     src={

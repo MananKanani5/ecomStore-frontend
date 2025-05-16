@@ -43,3 +43,7 @@ body {
 .carousel.carousel-slider .control-arrow{
   display: none;
 }
+
+.Toastify__toast-container--top-right{
+  padding: 10px !important;
+}

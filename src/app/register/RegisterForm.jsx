@@ -3,16 +3,19 @@ import React, { useState } from "react";
 import Input from "../components/form/Input";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 import { FcGoogle } from "react-icons/fc";
-import { loginUser } from "../api/AuthAPI";
+import { loginUser, registerUser } from "../api/AuthAPI";
 import { toast } from "react-toastify";
-import Link from "next/link.js";
+import Link from "next/link";
 
-const LoginForm = () => {
+const RegisterForm = () => {
   const [showPassword, setShowPassword] = useState(false);
   const togglePasswordVisibility = () => setShowPassword((prev) => !prev);
 
   const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
     email: "",
+    phone: "",
     password: "",
   });
 
@@ -28,43 +31,72 @@ const LoginForm = () => {
     e.preventDefault();
 
     try {
-      const response = await loginUser(formData);
+      const response = await registerUser(formData);
 
       if (response.status) {
-        toast.success(response.message || "Login successful!");
+        toast.success(response.message || "Registration successful!");
       } else {
-        toast.error(response.message || "Login failed. Please try again.");
+        toast.error(
+          response.message || "Registration failed. Please try again."
+        );
       }
     } catch (error) {
       if (error.response) {
         toast.error(
           error.response.data.message ||
-            "Login failed. Please check your credentials."
+            "Registration failed. Please check your credentials."
         );
       } else {
-        toast.error("Login failed. Please try again.");
+        toast.error("Registration failed. Please try again.");
       }
     }
   };
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-4 w-full">
+      <div className="flex gap-3 max-lg:flex-col">
+        <Input
+          type="text"
+          placeholder="Firstname *"
+          name="firstName"
+          value={formData.firstName}
+          onChange={handleChange}
+          required
+        />
+        <Input
+          type="text"
+          placeholder="Lastname *"
+          name="lastName"
+          value={formData.lastName}
+          onChange={handleChange}
+          required
+        />
+      </div>
+
       <Input
         type="text"
-        placeholder="Enter your email"
+        placeholder="Enter your email *"
         name="email"
         value={formData.email}
         onChange={handleChange}
         required
       />
+
+      <Input
+        type="text"
+        placeholder="Phone Number"
+        name="phone"
+        value={formData.phone}
+        onChange={handleChange}
+      />
+
       <div className="relative w-full">
         <Input
           type={showPassword ? "text" : "password"}
-          placeholder="Enter your password"
+          placeholder="Create password *"
           name="password"
           value={formData.password}
           onChange={handleChange}
-          required
         />
         <span
           className="absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer"
@@ -74,17 +106,17 @@ const LoginForm = () => {
         </span>
       </div>
 
-      <p className="text-center flex justify-between text-sm">
+      <p className="text-center text-sm">
         <span>
-          <Link href={"/register"}> Register Here</Link>
-        </span>
-        <span>
-          <Link href={"/forgot-password"}> Forgot Password</Link>
+          Already Have Account ?{" "}
+          <Link className="text-primary" href={"/login"}>
+            Login Here
+          </Link>
         </span>
       </p>
 
       <button type="submit" className="button">
-        Login
+        Register
       </button>
 
       <div
@@ -94,10 +126,10 @@ const LoginForm = () => {
         }
       >
         <FcGoogle className="text-xl" />
-        <span>Login with Google</span>
+        <span>Register with Google</span>
       </div>
     </form>
   );
 };
 
-export default LoginForm;
+export default RegisterForm;

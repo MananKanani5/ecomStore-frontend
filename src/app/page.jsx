@@ -10,7 +10,6 @@ const page = () => {
     <>
       <Slider />
       <FeatureList />
-      <Products />
       <div className="container mx-auto px-4 py-28"></div>
     </>
   );

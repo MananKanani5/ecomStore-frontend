@@ -1,6 +1,5 @@
 import React from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import slide1 from "../assets/slider/1.jpg";
@@ -82,31 +81,19 @@ const Slider = () => {
                 >
                   {item.title}
                 </h3>
-                <>
-                  <p
-                    className={`text-sm font-medium sm:hidden animate__animated animate__fadeInUp ${
-                      item.alignment === "left"
-                        ? "text-left"
-                        : item.alignment === "center"
-                        ? "text-center"
-                        : "text-right"
-                    }`}
-                  >
-                    {item.description?.slice(0, 50) + "..."}
-                  </p>
 
-                  <p
-                    className={`text-lg font-medium max-sm:hidden animate__animated animate__fadeInUp ${
-                      item.alignment === "left"
-                        ? "text-left"
-                        : item.alignment === "center"
-                        ? "text-center"
-                        : "text-right"
-                    }`}
-                  >
-                    {item.description}
-                  </p>
-                </>
+                <p
+                  className={`text-lg max-sm:hidden animate__animated animate__fadeInUp ${
+                    item.alignment === "left"
+                      ? "text-left"
+                      : item.alignment === "center"
+                      ? "text-center"
+                      : "text-right"
+                  }`}
+                >
+                  {item.description}
+                </p>
+
                 <Link
                   className="button animate__animated animate__fadeInUp"
                   href={item.buttonLink}

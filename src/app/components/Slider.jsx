@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
-import { Carousel } from "react-responsive-carousel";
-import "react-responsive-carousel/lib/styles/carousel.min.css";
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
 import slide1 from "../assets/slider/1.jpg";
 import slide2 from "../assets/slider/2.jpg";
 
@@ -38,22 +38,34 @@ const slider = [
   },
 ];
 
+const responsive = {
+  desktop: {
+    breakpoint: { max: 3000, min: 1024 },
+    items: 1,
+  },
+  tablet: {
+    breakpoint: { max: 1024, min: 640 },
+    items: 1,
+  },
+  mobile: {
+    breakpoint: { max: 640, min: 0 },
+    items: 1,
+  },
+};
+
 const Slider = () => {
   return (
     <section className="hero-section bg-gray-200">
       <div className="container mx-auto">
         <Carousel
+          responsive={responsive}
+          infinite
           autoPlay={true}
-          infiniteLoop={true}
-          showThumbs={false}
-          showStatus={false}
-          showIndicators={false}
-          interval={3000}
-          transitionTime={600}
-          stopOnHover={true}
-          swipeable={true}
-          emulateTouch={true}
-          className="carousel-container"
+          arrows={false}
+          keyBoardControl={true}
+          customTransition="all 0.5s"
+          transitionDuration={600}
+          containerClass="carousel-container"
         >
           {slider.map((item) => (
             <div

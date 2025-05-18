@@ -1,5 +1,7 @@
 import React from "react";
 import SingleFeature from "./SingleFeature";
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
 
 const features = [
   {
@@ -24,19 +26,46 @@ const features = [
   },
 ];
 
+const responsive = {
+  desktop: {
+    breakpoint: { max: 3000, min: 1024 },
+    items: 4,
+  },
+  tablet: {
+    breakpoint: { max: 1024, min: 640 },
+    items: 2,
+  },
+  mobile: {
+    breakpoint: { max: 640, min: 0 },
+    items: 1,
+  },
+};
+
 const FeatureList = () => {
   return (
     <section>
-      <div className="container mx-auto flex max-lg:flex-col items-center justify-between gap-2 px-12 py-18 max-lg:py-12 max-lg:px-5">
-        {features &&
-          features.map((feature) => (
-            <SingleFeature
-              key={feature.title}
-              icon={feature.icon}
-              title={feature.title}
-              description={feature.description}
-            />
-          ))}
+      <div className="container mx-auto px-12 py-18 max-lg:py-16 max-lg:px-5">
+        <Carousel
+          responsive={responsive}
+          infinite
+          autoPlay={false}
+          arrows={false}
+          keyBoardControl={true}
+          customTransition="all 0.5s"
+          transitionDuration={600}
+          containerClass="carousel-container"
+          itemClass="px-3"
+        >
+          {features &&
+            features.map((feature) => (
+              <SingleFeature
+                key={feature.title}
+                icon={feature.icon}
+                title={feature.title}
+                description={feature.description}
+              />
+            ))}
+        </Carousel>
       </div>
     </section>
   );

@@ -3,6 +3,7 @@ import "./globals.css";
 import "animate.css";
 import { ToastContainer } from "react-toastify";
 import { Poppins } from "next/font/google";
+import Footer from "./components/Footer";
 
 export const metadata = {
   title: "ecomStore | Home",
@@ -32,6 +33,7 @@ export default function RootLayout({ children }) {
           theme="light"
         />
         {children}
+        <Footer />
       </body>
     </html>
   );

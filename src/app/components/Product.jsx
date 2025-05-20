@@ -19,7 +19,7 @@ const Product = ({
             src={mainImage}
             height={100}
             width={250}
-            className="w-full rounded"
+            className="w-full rounded hover:scale-101 duration-300"
           />
         </Link>
 

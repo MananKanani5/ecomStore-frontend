@@ -96,7 +96,7 @@ const products = [
 
 const HomeProducts = () => {
   return (
-    <section className="container mx-auto px-12 max-lg:pb-12 max-lg:px-5">
+    <section className="container mx-auto px-12 pb-18 max-lg:pb-12 max-lg:px-5">
       <div className="flex flex-col items-center justify-center gap-2 mb-18">
         <h2 className="text-3xl font-semibold text-center">
           You are interested in
@@ -117,10 +117,16 @@ const HomeProducts = () => {
           every child's imagination.
         </p>
       </div>
-      <div className="flex justify-between gap-6 flex-wrap">
+      <div className="flex justify-between gap-6 flex-wrap mb-18">
         {products.map((product) => (
           <Product key={product.id} {...product} />
         ))}
+      </div>
+
+      <div className="flex justify-center">
+        <Link href={"/"} className="button-bordered text-center">
+          Show More Products
+        </Link>
       </div>
     </section>
   );

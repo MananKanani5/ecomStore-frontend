@@ -11,9 +11,6 @@ module.exports = {
       colors: {
         primary: "#92855c",
       },
-      fontFamily: {
-        jakarta: ['"Plus Jakarta Sans"', "sans-serif"],
-      },
     },
   },
   plugins: [],

@@ -62,6 +62,7 @@ const Slider = () => {
           infinite
           autoPlay={true}
           arrows={false}
+          autoPlaySpeed={5000}
           keyBoardControl={true}
           customTransition="all 0.5s"
           transitionDuration={600}

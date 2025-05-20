@@ -5,6 +5,7 @@ import "animate.css";
 import FeatureList from "./components/FeatureList";
 import Products from "./components/Products";
 import BannerList from "./components/BannerList";
+import HomeProducts from "./components/HomeProducts";
 
 const page = () => {
   return (
@@ -12,7 +13,8 @@ const page = () => {
       <Slider />
       <FeatureList />
       <BannerList />
-      <div className="container mx-auto px-4 py-28"></div>
+      <HomeProducts />
+      <div className="py-56"></div>
     </>
   );
 };

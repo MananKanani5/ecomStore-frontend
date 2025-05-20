@@ -36,7 +36,7 @@ const banners = [
 
 const BannerList = () => {
   return (
-    <section className="container mx-auto flex max-lg:flex-col gap-5 justify-between px-12 pb-18 max-lg:pb-12 max-lg:px-5">
+    <section className="container mx-auto flex max-lg:flex-col gap-5 justify-between px-12 pb-18 max-lg:px-5">
       {banners.map((banner) => (
         <SingleBanner
           key={banner.id}

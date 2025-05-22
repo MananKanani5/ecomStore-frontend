@@ -3,12 +3,13 @@ import React, { useState } from "react";
 import Input from "../components/form/Input";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 import { FcGoogle } from "react-icons/fc";
-import { loginUser, registerUser } from "../api/AuthAPI";
+import { registerUser } from "../api/AuthAPI";
 import { toast } from "react-toastify";
 import Link from "next/link";
 
 const RegisterForm = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const togglePasswordVisibility = () => setShowPassword((prev) => !prev);
 
   const [formData, setFormData] = useState({
@@ -29,6 +30,7 @@ const RegisterForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
 
     try {
       const response = await registerUser(formData);
@@ -49,6 +51,8 @@ const RegisterForm = () => {
       } else {
         toast.error("Registration failed. Please try again.");
       }
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -115,19 +119,22 @@ const RegisterForm = () => {
         </span>
       </p>
 
-      <button type="submit" className="button">
-        Register
+      <button type="submit" className="button" disabled={isLoading}>
+        {isLoading ? "Registering..." : "Register"}
       </button>
 
-      <div
+      <button
         className="flex items-center justify-center bg-gray-100 rounded p-3 gap-2 cursor-pointer hover:bg-gray-200 duration-300 "
         onClick={() =>
           (window.location.href = `${process.env.NEXT_PUBLIC_API_URL}/auth/user/google`)
         }
+        type="button"
+        disabled={isLoading}
+        style={isLoading ? { cursor: "not-allowed", opacity: 0.6 } : {}}
       >
         <FcGoogle className="text-xl" />
         <span>Register with Google</span>
-      </div>
+      </button>
     </form>
   );
 };

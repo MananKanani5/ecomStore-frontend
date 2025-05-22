@@ -5,10 +5,11 @@ import { FiEye, FiEyeOff } from "react-icons/fi";
 import { FcGoogle } from "react-icons/fc";
 import { loginUser } from "../api/AuthAPI";
 import { toast } from "react-toastify";
-import Link from "next/link.js";
+import Link from "next/link";
 
 const LoginForm = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const togglePasswordVisibility = () => setShowPassword((prev) => !prev);
 
   const [formData, setFormData] = useState({
@@ -26,6 +27,7 @@ const LoginForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
 
     try {
       const response = await loginUser(formData);
@@ -44,6 +46,8 @@ const LoginForm = () => {
       } else {
         toast.error("Login failed. Please try again.");
       }
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -74,28 +78,31 @@ const LoginForm = () => {
         </span>
       </div>
 
-      <p className="text-center flex justify-between text-sm">
+      <div className="text-center flex justify-between text-sm">
+        <Link className="text-primary" href={"/register"}>
+          Register Here
+        </Link>
         <span>
-          <Link href={"/register"}> Register Here</Link>
+          <Link href={"/forgot-password"}>Forgot Password</Link>
         </span>
-        <span>
-          <Link href={"/forgot-password"}> Forgot Password</Link>
-        </span>
-      </p>
+      </div>
 
-      <button type="submit" className="button">
-        Login
+      <button type="submit" className="button" disabled={isLoading}>
+        {isLoading ? "Loading..." : "Login"}
       </button>
 
-      <div
+      <button
         className="flex items-center justify-center bg-gray-100 rounded p-3 gap-2 cursor-pointer hover:bg-gray-200 duration-300 "
         onClick={() =>
           (window.location.href = `${process.env.NEXT_PUBLIC_API_URL}/auth/user/google`)
         }
+        type="button"
+        disabled={isLoading}
+        style={isLoading ? { cursor: "not-allowed", opacity: 0.6 } : {}}
       >
         <FcGoogle className="text-xl" />
         <span>Login with Google</span>
-      </div>
+      </button>
     </form>
   );
 };

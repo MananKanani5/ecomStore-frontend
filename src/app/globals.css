@@ -22,7 +22,12 @@
   transition-duration: 0.3s;
 }
 
-.button:hover {
+.button:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.button:not(:disabled):hover {
   background-color: var(--primary-color);
 }
 

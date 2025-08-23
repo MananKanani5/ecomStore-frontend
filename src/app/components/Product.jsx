@@ -20,6 +20,7 @@ const Product = ({
             height={100}
             width={250}
             className="w-full rounded hover:scale-101 duration-300"
+            alt={productName}
           />
         </Link>
 

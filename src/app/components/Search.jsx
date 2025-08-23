@@ -40,7 +40,6 @@ const Search = ({ isSearchOpen, toggleSearch }) => {
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
     >
-      {console.log(isSearchOpen)}
       <div className="container mx-auto flex justify-center h-full px-12 py-2 max-lg:px-5 pt-28">
         <button
           className="absolute top-5 right-5 text-3xl cursor-pointer"

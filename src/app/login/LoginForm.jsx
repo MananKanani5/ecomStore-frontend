@@ -34,6 +34,9 @@ const LoginForm = () => {
 
       if (response.status) {
         toast.success(response.message || "Login successful!");
+        localStorage.setItem("token", response.data.token);
+        localStorage.setItem("user", JSON.stringify(response.data.user));
+        window.location.href = "/";
       } else {
         toast.error(response.message || "Login failed. Please try again.");
       }

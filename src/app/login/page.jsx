@@ -1,6 +1,5 @@
 import React from "react";
 import LoginForm from "./LoginForm.jsx";
-import Link from "next/link.js";
 
 export const metadata = {
   title: "ecomStore | Login",

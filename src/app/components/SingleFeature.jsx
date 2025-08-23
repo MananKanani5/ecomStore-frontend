@@ -1,8 +1,8 @@
 import React from "react";
-import * as IoIcons from "react-icons/io5";
+import { loadIcon } from "../utils/loadIcon";
 
 const SingleFeature = ({ icon, title, description }) => {
-  const IconComponent = IoIcons[icon] || (() => <></>);
+  const IconComponent = loadIcon(icon, "io5");
   return (
     <div className=" group flex items-center gap-2 max-lg:gap-5 border border-transparent hover:border-gray-200 p-4 max-lg:p-0 rounded duration-300 animate__animated animate__fadeIn">
       <div className="bg-gray-200 p-4 max-lg:p-5 rounded-full group-hover:bg-[#a79d80] duration-300">

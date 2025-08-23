@@ -1,11 +1,18 @@
 import React from "react";
+import PageHeader from "../components/PageHeader";
 
-const page = () => {
+const Page = () => {
   return (
-    <>
-      <div>My Account page</div>
-    </>
+    <section className="my-account">
+      <PageHeader
+        title="My Account"
+        breadcrumbs={[
+          { label: "Home", link: "/" },
+          { label: "My Account", link: "/my-account" },
+        ]}
+      />
+    </section>
   );
 };
 
-export default page;
+export default Page;

@@ -3,7 +3,14 @@ import React from "react";
 const PageHeader = ({ title, breadcrumbs, bgImage }) => {
   return (
     <>
-      <section className="page-header h-60 max-lg:h-40 w-full bg-gray-100">
+      <section
+        className="page-header h-60 max-lg:h-40 w-full bg-gray-100 "
+        style={{
+          backgroundImage: `url(${bgImage})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
         <div className="container mx-auto h-full flex flex-col justify-center gap-2 px-12 py-2 max-lg:px-5">
           <h1 className="text-2xl font-bold">{title}</h1>
           {breadcrumbs && (

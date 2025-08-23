@@ -37,6 +37,13 @@ const RegisterForm = () => {
 
       if (response.status) {
         toast.success(response.message || "Registration successful!");
+        setFormData({
+          firstName: "",
+          lastName: "",
+          email: "",
+          phone: "",
+          password: "",
+        });
       } else {
         toast.error(
           response.message || "Registration failed. Please try again."

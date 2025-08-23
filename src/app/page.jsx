@@ -14,7 +14,6 @@ const page = () => {
       <FeatureList />
       <BannerList />
       <HomeProducts />
-      {/* <div className="py-56"></div> */}
     </>
   );
 };

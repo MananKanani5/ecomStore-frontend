@@ -2,8 +2,8 @@ import React from "react";
 import Link from "next/link";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import slide1 from "../assets/slider/1.jpg";
-import slide2 from "../assets/slider/2.jpg";
+import slide1 from "@/app/assets/slider/1.jpg";
+import slide2 from "@/app/assets/slider/2.jpg";
 
 const slider = [
   {

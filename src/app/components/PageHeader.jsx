@@ -4,7 +4,7 @@ const PageHeader = ({ title, breadcrumbs, bgImage }) => {
   return (
     <>
       <section
-        className="page-header h-60 max-lg:h-40 w-full bg-gray-100 "
+        className="page-header h-60 max-lg:h-40 w-full bg-gray-100 animate__animated animate__fadeIn"
         style={{
           backgroundImage: `url(${bgImage})`,
           backgroundSize: "cover",

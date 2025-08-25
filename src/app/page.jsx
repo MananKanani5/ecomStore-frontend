@@ -1,11 +1,10 @@
 "use client";
 import React from "react";
-import Slider from "./components/Slider";
+import Slider from "./components/HomePage/Slider";
 import "animate.css";
-import FeatureList from "./components/FeatureList";
-import Products from "./components/Products";
-import BannerList from "./components/BannerList";
-import HomeProducts from "./components/HomeProducts";
+import FeatureList from "./components/HomePage/FeatureList";
+import BannerList from "./components/HomePage/BannerList";
+import HomeProducts from "./components/HomePage/HomeProducts";
 
 const page = () => {
   return (

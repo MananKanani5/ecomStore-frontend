@@ -1,5 +1,5 @@
+import { loadIcon } from "@/app/utils/loadIcon";
 import React from "react";
-import { loadIcon } from "../utils/loadIcon";
 
 const SingleFeature = ({ icon, title, description }) => {
   const IconComponent = loadIcon(icon, "io5");

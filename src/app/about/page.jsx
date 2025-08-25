@@ -56,7 +56,7 @@ const page = () => {
         </h2>
         <div className="flex gap-10 overflow-hidden max-lg:flex-col">
           <Image
-            src="/about/ab_banner_01.jpg"
+            src={aboutDetails.img1}
             alt="About Us"
             className="w-full object-cover animate__animated animate__fadeInUp"
             width={100}
@@ -64,7 +64,7 @@ const page = () => {
             unoptimized
           />
           <Image
-            src="/about/ab_banner_02.jpg"
+            src={aboutDetails.img2}
             alt="About Us"
             className="w-full object-cover animate__animated animate__fadeInUp"
             width={100}
@@ -75,7 +75,7 @@ const page = () => {
 
         <div className="flex gap-10 items-center mt-5 max-lg:flex-col">
           <Image
-            src="/about/m1_video_bg-scaled.jpg"
+            src={aboutDetails.img3}
             alt="About Us"
             className="w-1/2 object-contain max-lg:w-full"
             width={100}

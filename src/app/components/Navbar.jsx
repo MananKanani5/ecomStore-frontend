@@ -103,7 +103,7 @@ const Navbar = () => {
                     <Link
                       href={item.href}
                       onClick={toggleMenu}
-                      className="flex items-center gap-1"
+                      className="flex items-center gap-1 max-lg:w-full"
                     >
                       {item.title}
 
